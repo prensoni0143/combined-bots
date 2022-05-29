@@ -119,6 +119,7 @@ async def profit_hunter_handler(event):
                 f"message forwarded successfully - [{source_channel.title}]"
             )
         except Exception as e:
+            print(ass)
             logger.info("{0} - Error parsing message {1} -[{2}]\n".format(str(message[:30]).replace("\n", ""), e,
                                                                           source_channel.title))
     else:

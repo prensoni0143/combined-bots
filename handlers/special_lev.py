@@ -24,7 +24,7 @@ binance_client_api = bicl(api_key, api_secret)
 
 def get_channel_a_output_format__second_destination_channel(text):
     final_output = ''
-    bottom_line = "Published By: @Trading_exp"
+    bottom_line = "Published By: @Prince_dw"
     # To find the stock
     symbol_search = re.search(r"(#)(\w+)[/|_](\w+)", text)
     # To search find price of Entry Point
@@ -288,22 +288,13 @@ async def special_lev_handler(event: telethon.events.newmessage.NewMessage.Event
 
     chat_info = await event.client.get_entity(chat)
     text = event.text
+    print(chat, channel_a)
     if chat == channel_a:
         destination_channel = await  event.client.get_entity(int(mapping[chat][0]))
         chat_link = f'Forward : [{chat_info.title}](t.me/{chat_info.username})\n'
         output_text = change_text_channel_1(text, destination_channel)
         output_text = chat_link + output_text
         # link_preview=False,
-        result = await event.client.send_message(entity=mapping[chat][0],
-                                           message=output_text)
-        if (result):
-            logger.info(
-                f"message forwarded successffully - {text[:20]} -[{destination_channel.title}]"
-            )
-        else:
-            logger.info(
-                f"message not forwarded successffully - {text[:20]} -[{destination_channel.title}]"
-            )
 
         # forward to the second destination channel
         allow = [
